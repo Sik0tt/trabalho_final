@@ -1,3 +1,4 @@
+
 import http from "../http-common";
 
 class FuncionarioDataService {
@@ -24,13 +25,13 @@ class FuncionarioDataService {
     async delete(cpf){
 
         console.log('FuncionarioDataService.delete: ', cpf);
-        return await http.get(`/deletefuncionario/`+cpf);
+        return await http.delete(`/deletefuncionario/`+cpf);
     }
 
     async update(data){
 
         console.log('FuncionarioDataService.update: ', data);
-        return await http.post(`/updatejogador/`, data);
+        return await http.put(`/updatefuncionario/:cpf`, data);
     }
     
     async create(data){

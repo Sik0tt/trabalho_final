@@ -5,64 +5,65 @@
             <h3>Funcionario</h3>
             <form>
                 <div class="form-group">
-                    <label for="inputCpf">cpf:</label>
-                    <input type="text" v-model="currentFuncionario.cpf" class="form-control" id="inputCpf">
-                </div>
+            <label for="inputCpf">Cpf:</label>
+            <input type="text" v-model="currentFuncionario.cpf" class="form-control" id="inputCpf">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputRg">Rg:</label>
-                    <input type="text" v-model="currentFuncionario.rg" class="form-control" id="inputRg">
-                </div>
+        <div class = "form-group">
+        <label for="inputRg">Rg:</label>
+            <input type="text" v-model="currentFuncionario.rg" class="form-control" id="inputRg">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Nome:</label>
-                    <input type="text" v-model="currentFuncionario.nome" class="form-control" id="inputNome">
-                </div>
+        <div class = "form-group">
+        <label for="inputNome">Nome:</label>
+            <input type="text" v-model="currentFuncionario.nome" class="form-control" id="inputNome">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Numero_celular:</label>
-                    <input type="text" v-model="currentFuncionario.Numero_celular" class="form-control" id="inputNumero_celular">
-                </div>
+         <div class = "form-group">
+        <label for="inputNumero_celular">Numero_celular:</label>
+            <input type="text" v-model="currentFuncionario.numero_celular" class="form-control" id="inputNumero_celular">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Email:</label>
-                    <input type="text" v-model="currentFuncionario.email" class="form-control" id="inputEmail">
-                </div>
+         <div class = "form-group">
+        <label for="inputEmail">Email:</label>
+            <input type="text" v-model="currentFuncionario.email" class="form-control" id="inputEmail">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Data_nascimento:</label>
-                    <input type="text" v-model="currentFuncionario.data_nascimento" class="form-control" id="inputDataNascimento">
-                </div>
+         <div class = "form-group">
+        <label for="inputDataNascimento">Data_nascimento:</label>
+            <input type="text" v-model="currentFuncionario.data_nascimento" class="form-control" id="inputDataNascimento">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Endereço:</label>
-                    <input type="text" v-model="currentFuncionario.endereco" class="form-control" id="inputEndereco">
-                </div>
+         <div class = "form-group">
+        <label for="inputEndereco">Endereço:</label>
+            <input type="text" v-model="currentFuncionario.endereco" class="form-control" id="inputEndereco">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Cep</label>
-                    <input type="text" v-model="currentFuncionario.cep" class="form-control" id="inputCep">
-                </div>
+         <div class = "form-group">
+        <label for="inputCep">Cep</label>
+            <input type="text" v-model="currentFuncionario.cep" class="form-control" id="inputCep">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Complemento:</label>
-                    <input type="text" v-model="currentFuncionario.nome" class="form-control" id="inputNome">
-                </div>
+         <div class = "form-group">
+        <label for="inputComplemento">Complemento:</label>
+            <input type="text" v-model="currentFuncionario.complemento" class="form-control" id="inputComplemento">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Ctps:</label>
-                    <input type="text" v-model="currentFuncionario.ctps" class="form-control" id="inputCtps">
-                </div>
+         <div class = "form-group">
+        <label for="inputCtps">Ctps:</label>
+            <input type="text" v-model="currentFuncionario.ctps" class="form-control" id="inputCtps">
+        </div>
 
-                <div class = "form-group">
-                    <label for="inputNome">Pis:</label>
-                    <input type="text" v-model="currentFuncionario.pis" class="form-control" id="inputPis">
-                </div>
+         <div class = "form-group">
+        <label for="inputPis">Pis:</label>
+            <input type="text" v-model="currentFuncionario.pis" class="form-control" id="inputPis">
+        </div>
 
-                <div class="form-group">
-                    <label for="inputSenha">Senha:</label>
-                    <input type="password" v-model="currentFuncionario.senha" class="form-control" id="inputSenha">
-                </div>            
+        <div class="form-group">
+            <label for="inputSenha">Senha:</label>
+            <input type="password" v-model="currentFuncionario.senha" class="form-control" id="inputSenha">
+        </div>
+             
 
             </form>
             <button class="badge badge-success" @click="updateFuncionario">Salvar</button>
@@ -84,15 +85,13 @@
  <script>
  
      import FuncionarioDataService from '../../services/FuncionarioDataService'
-     import PatenteDataService from '../../services/PatenteDataService'
  
      export default{
-      name:'editFuncionarios',
+      name:'editFuncionario',
       data() {
              return {                
                  currentFuncionario: null,
-                 message: ''
-                 
+                 message: '',
              }
          },
          methods: {
@@ -109,10 +108,9 @@
                     console.log(e);
                 })
             },
-           
             updateFuncionario(){
 
-               FuncionarioDataService.update(this.currentFuncionario)
+                FuncionarioDataService.update(this.currentFuncionario)
                 .then(response => {
                     console.log('FuncionarioDataService.update');
                     this.message = 'Funcionario alterado com sucesso !';
@@ -126,14 +124,14 @@
                 FuncionarioDataService.delete(this.currentFuncionario.cpf)
                 .then(response => {
                     console.log(response.data);
-                    this.$router.push({ name: "funcionarios-list" });
+                    this.$router.push({ name: "funcionario-list" });
                 })
                 .catch(e => {
                 console.log(e);
                 });
             },
             voltar(){
-                this.$router.push({ name: "funcionarios-list" });
+                this.$router.push({ name: "funcionario-list" });
             }
          },
          mounted() {

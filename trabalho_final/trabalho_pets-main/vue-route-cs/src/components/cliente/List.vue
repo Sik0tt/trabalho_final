@@ -3,7 +3,7 @@
      
 
         <div class="col-md-6">
-            <h4>Listagem de Funcionarios</h4>
+            <h4>Listagem de Clientes</h4>
             <table class="table table-striped" >
                 <tr>
 
@@ -16,8 +16,7 @@
                     <th scope="col">Endereço</th> 
                     <th scope="col">Cep</th>
                     <th scope="col">Complemento</th>
-                    <th scope="col">Ctps</th>
-                    <th scope="col">Pis</th>
+                    <th scope="col">Data de cadastro</th>
                     <th scope="col">Alterar</th>
                     <th scope="col">Remover</th>
                 </tr>                     
@@ -33,11 +32,10 @@
                             <td>{{f.endereco}}</td>
                             <td>{{f.cep}}</td>
                             <td>{{f.complemento}}</td>
-                            <td>{{f.ctps}}</td>         
-                            <td>{{f.pis}}</td>    
-                            <td>{{ f.senha }}</td>  
-                            <td><button v-on:click="setCurrentFuncionario(f, indice)" class="btn" type="button">Alterar</button></td>
-                            <td><button v-on:click="remFuncionario(f, indice)" class="btn" type="button">Remover</button></td>
+                            <td>{{f.data_cadastro}}</td>         
+                                
+                            <td><button v-on:click="setCurrentCliente(f, indice)" class="btn" type="button">Alterar</button></td>
+                            <td><button v-on:click="remCliente(f, indice)" class="btn" type="button">Remover</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -45,69 +43,61 @@
         </div>
 
         <div class="col-md-6">
-            <div v-if="currentFuncionario">
-                    <h4>Funcionario</h4>
+            <div v-if="currentCliente">
+                    <h4>Cliente</h4>
 
                     <div>
-                    <label><strong>CPF:</strong></label> {{ currentFuncionario.cpf }}
+                    <label><strong>CPF:</strong></label> {{ currentCliente.cpf }}
                     </div>
 
                     <div>
-                    <label><strong>RG:</strong></label> {{ currentFuncionario.rg}}
+                    <label><strong>RG:</strong></label> {{ currentCliente.rg}}
                     </div>
 
                     <div>
-                    <label><strong>Nome:</strong></label> {{ currentFuncionario.nome}}
+                    <label><strong>Nome:</strong></label> {{ currentCliente.nome}}
                     </div>
 
                     <div>
-                    <label><strong>Numero do celular:</strong></label> {{ currentFuncionario.numero_celular}}
+                    <label><strong>Numero do celular:</strong></label> {{ currentCliente.numero_celular}}
                     </div>
 
                     <div>
-                    <label><strong>Email:</strong></label> {{ currentFuncionario.email}}
+                    <label><strong>Email:</strong></label> {{ currentCliente.email}}
                     </div>
 
                     <div>
-                    <label><strong>Data de Nascimento:</strong></label> {{ currentFuncionario.data_nascimento }}
+                    <label><strong>Data de Nascimento:</strong></label> {{ currentCliente.data_nascimento }}
                     </div>
 
                     <div>
-                    <label><strong>Endereço:</strong></label> {{ currentFuncionario.endereco}}
+                    <label><strong>Endereço:</strong></label> {{ currentCliente.endereco}}
                     </div>
 
                     <div>
-                    <label><strong>Cep:</strong></label> {{ currentFuncionario.cep}}
+                    <label><strong>Cep:</strong></label> {{ currentCliente.cep}}
                     </div>
 
                     <div>
-                    <label><strong>Complemento:</strong></label> {{ currentFuncionario.complemento}}
+                    <label><strong>Complemento:</strong></label> {{ currentCliente.complemento}}
+                    </div>
+
+                    <div>
+                    <label><strong>Pis:</strong></label> {{ currentCliente.data_cadastro}}
                     </div>
 
                     
-                    <div>
-                    <label><strong>Ctps:</strong></label> {{ currentFuncionario.ctps}}
-                    </div>
-
-                    <div>
-                    <label><strong>Pis:</strong></label> {{ currentFuncionario.pis}}
-                    </div>
-
-
-                    <div>
-                    <label><strong>Senha:</strong></label> {{ currentFuncionario.senha}}
-                    </div>
 
                     <a class="badge badge-warning"
-                    :href="'/updatefuncionario/' + currentFuncionario.cpf"
+                    :href="'/updatecliente' + currentCliente.cpf"
                     >
                     Edit
                     </a>
             </div>
             <div v-else>
                 <br />
-                <p>Clique em um Funcionario...</p>
-                <router-link to="/addfuncionario" class="badge badge-success">Novo</router-link>                
+                <p>Clique em um Cliente...</p>
+                <router-link to="/addcliente" class="badge badge-success">Novo</router-link>                
 
             </div>
         </div>
@@ -117,42 +107,42 @@
  </template>
  <script>
  
-     import FuncionarioDataService from '../../services/FuncionarioDataService'     
+     import ClienteDataService from '../../services/ClienteDataService'     
  
      export default{
-      name:'listFuncionarios',
+      name:'listClientes',
       data() {
              return {
-                 funcionarios: [],
+                 clientes: [],
                  currentFuncionario: null,
                  currentIndex: -1
              }
          },
          methods: {
-            listarFuncionarios(){
+            listarClientes(){
 
                 
-                FuncionarioDataService.list().then(response =>{
+                ClienteDataService.list().then(response =>{
 
-                    console.log("Retorno do seviço authenticateFuncionario", response.status);
+                   
 
-                   this.funcionarios = response.data;
+                   this.clientes = response.data;
 
                 }).catch(response => {
 
                     // error callback
-                    alert('Não conectou no serviço listfuncionario');
+                    alert('Não conectou no serviço listCliente');
                     console.log(response);
                 });
             },
-            setCurrentFuncionario(funcionario, index){
+            setCurrentCliente(cliente, index){
 
-                this.currentFuncionario = funcionario;
+                this.currentCliente = cliente;
                 this.currentIndex = index;
             },
-            remFuncionario(funcionario, index){
+            remCliente(cliente, index){
 
-                FuncionarioDataService.delete(funcionario.cpf)
+                ClienteDataService.delete(cliente.cpf)
                 .then(response => {
                     console.log(response.data);
                     this.refreshList();
@@ -163,14 +153,14 @@
 
             },
             refreshList() {
-                this.listarFuncionarios();
+                this.listarClientes();
                 this.currentTutorial = null;
                 this.currentIndex = -1;
             }
             
          },
          mounted() {
-            this.listarFuncionarios();
+            this.listarClientes();
          }
  
      }

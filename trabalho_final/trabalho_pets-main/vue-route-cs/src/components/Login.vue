@@ -3,13 +3,13 @@
             <h3>Autenticacação</h3>
             <form>
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="inputCpf">CPF:</label>
-                    <input class="form-control" type="text" v-model="funcionario.cpf" id="inputCpf">
+                    <label class="form-label" for="inputAcpf">CPF:</label>
+                    <input class="form-control" type="text" v-model="funcionario.cpf" id="inputAcpf">
                     </div>
                 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="inputSenha">Senha:</label>
-                    <input class="form-control" type="password" v-model="funcionario.senha" id="inputSenha">
+                    <label class="form-label" for="inputASenha">Senha:</label>
+                    <input class="form-control" type="password" v-model="funcionario.senha" id="inputASenha">
                 </div>
                 
                 <button class="btn btn-primary" @click='createFuncionarioForm()' type="button">Autenticar</button>
@@ -37,12 +37,12 @@
                            senha: this.funcionario.senha
                         }                                    
 
-                FuncionarioDataService.authenticate(j).then(response =>{
+                FuncionarioDataService.authenticate(f).then(response =>{
 
                     console.log("Retorno do seviço authenticateFuncionario", response.status);
                     if(response.status == 201 || response.status == 200){
 
-                        alert('Funcionario '+ response.data.cpf + ' authenticate com sucesso');       
+                        alert('Funcionario '+ response.data.nome + ' authenticate com sucesso');       
                         
                         this.setAuthenticated({cpf: response.data.cpf})
                         
@@ -50,7 +50,7 @@
 
                     }else if(response.status == 204){
 
-                        alert('CPF ou senha inválidos ! ');
+                        alert('cpf ou senha inválidos ! ');
                     }
 
                     this.clearForm();

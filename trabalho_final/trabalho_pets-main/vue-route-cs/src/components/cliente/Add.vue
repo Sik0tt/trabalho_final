@@ -4,88 +4,77 @@
 
         <div class="form-group">
             <label for="inputCpf">Cpf:</label>
-            <input type="text" v-model="funcionario.cpf" class="form-control" id="inputCpf">
+            <input type="text" v-model="cliente.cpf" class="form-control" id="inputCpf">
         </div>
 
         <div class = "form-group">
         <label for="inputRg">Rg:</label>
-            <input type="text" v-model="funcionario.rg" class="form-control" id="inputRg">
+            <input type="text" v-model="cliente.rg" class="form-control" id="inputRg">
         </div>
 
         <div class = "form-group">
         <label for="inputNome">Nome:</label>
-            <input type="text" v-model="funcionario.nome" class="form-control" id="inputNome">
+            <input type="text" v-model="cliente.nome" class="form-control" id="inputNome">
         </div>
 
          <div class = "form-group">
         <label for="inputNumero_celular">Numero_celular:</label>
-            <input type="text" v-model="funcionario.numero_celular" class="form-control" id="inputNumero_celular">
+            <input type="text" v-model="cliente.numero_celular" class="form-control" id="inputNumero_celular">
         </div>
 
          <div class = "form-group">
         <label for="inputEmail">Email:</label>
-            <input type="text" v-model="funcionario.email" class="form-control" id="inputEmail">
+            <input type="text" v-model="cliente.email" class="form-control" id="inputEmail">
         </div>
 
          <div class = "form-group">
         <label for="inputDataNascimento">Data_nascimento:</label>
-            <input type="text" v-model="funcionario.data_nascimento" class="form-control" id="inputDataNascimento">
+            <input type="text" v-model="cliente.data_nascimento" class="form-control" id="inputDataNascimento">
         </div>
 
          <div class = "form-group">
         <label for="inputEndereco">Endereço:</label>
-            <input type="text" v-model="funcionario.endereco" class="form-control" id="inputEndereco">
+            <input type="text" v-model="cliente.endereco" class="form-control" id="inputEndereco">
         </div>
 
          <div class = "form-group">
         <label for="inputCep">Cep</label>
-            <input type="text" v-model="funcionario.cep" class="form-control" id="inputCep">
+            <input type="text" v-model="cliente.cep" class="form-control" id="inputCep">
         </div>
 
          <div class = "form-group">
         <label for="inputComplemento">Complemento:</label>
-            <input type="text" v-model="funcionario.complemento" class="form-control" id="inputComplemento">
+            <input type="text" v-model="cliente.complemento" class="form-control" id="inputComplemento">
         </div>
 
          <div class = "form-group">
-        <label for="inputCtps">Ctps:</label>
-            <input type="text" v-model="funcionario.ctps" class="form-control" id="inputCtps">
+        <label for="inputData_cadastro">Data de cadastro:</label>
+            <input type="text" v-model="cliente.data_cadastro" class="form-control" id="inputData_cadastro">
         </div>
 
-         <div class = "form-group">
-        <label for="inputPis">Pis:</label>
-            <input type="text" v-model="funcionario.pis" class="form-control" id="inputPis">
-        </div>
-
-        <div class="form-group">
-            <label for="inputSenha">Senha:</label>
-            <input type="password" v-model="funcionario.senha" class="form-control" id="inputSenha">
-        </div>            
-
-        
   
-        <button @click="saveFuncionario" class="btn btn-success">Salvar</button>
-        <router-link to="/funcionarios" class="btn btn-success">Voltar</router-link>                 
+        <button @click="saveCliente" class="btn btn-success">Salvar</button>
+        <router-link to="/clientes" class="btn btn-success">Voltar</router-link>                 
 
       </div>
   
       <div v-else>
         <h4>Dados enviados com sucesso !</h4>
-        <button class="btn btn-success" @click="newFuncionario">Novo</button>
-        <router-link to="/funcionarios" class="btn btn-success">Voltar</router-link>
+        <button class="btn btn-success" @click="newCliente">Novo</button>
+        <router-link to="/clientes" class="btn btn-success">Voltar</router-link>
       </div>
     </div>
   </template>
 
 <script>
 
-    import FuncionarioDataService from '../../services/FuncionarioDataService'
+    import ClienteDataService from '../../services/ClienteDataService'
 
     export default {
-        name: "addFuncionario",
+        name: "addCliente",
         data(){
             return {
-                funcionario: { 
+                cliente: { 
                                     cpf: '', 
                                     rg: '',  
                                     nome: '',
@@ -95,9 +84,7 @@
                                     endereco: '', 
                                     cep: '',
                                     complemento: '',
-                                    ctps: '',  
-                                    pis: '',  
-                                    senha: '',
+                                    data_cadastro: ''
                                     
                                                                                                        
                                
@@ -108,18 +95,17 @@
         },
         methods: {
 
-            saveFuncionario(){
+            saveCliente(){
 
-                var func = jQuery.extend({}, this.funcionario);//clona o this.novo_jogador e armazena na variavel jogador. dessa forma alteracoes em this.novo_jogador nao irao refletir em jogador.                                                                   
+                var func = jQuery.extend({}, this.cliente);//clona o this.novo_jogador e armazena na variavel jogador. dessa forma alteracoes em this.novo_jogador nao irao refletir em jogador.                                                                   
 
                 if (func.cpf.trim().length > 0 && func.rg.trim().length > 0 && 
                     func.nome.trim().length > 0 && func.numero_celular.trim().length > 0 &&
                     func.email.trim().length > 0 && func.data_nascimento.trim().length > 0 &&
                     func.endereco.trim().length > 0 && func.cep.trim().length > 0 &&
-                    func.complemento.trim().length > 0 && func.ctps.trim().length > 0 &&
-                    func.pis.trim().length > 0 && func.senha.trim().length > 0) {
+                    func.complemento.trim().length > 0 && func.data_cadastro.trim().length > 0 ) {
                 
-                    FuncionarioDataService.create(func)
+                    ClienteDataService.create(func)
                     .then(response => {
                         
                         this.submitted = true;
@@ -134,10 +120,10 @@
                 }
 
             },
-            newFuncionario(){
+            newCliente(){
 
                 this.submitted = false;
-                this.funcionario = {};
+                this.cliente = {};
             },
         },
 

@@ -3,10 +3,14 @@ import Router from 'vue-router'
 
 import login from  '@/components/Login'
 import home from  '@/components/Home'
+
+import novoFuncionario   from  '@/components/funcionario/Add'
 import listFuncionarios from  '@/components/funcionario/List'
 import editFuncionario   from  '@/components/funcionario/Edit'
-import novoFuncionario   from  '@/components/funcionario/Add'
 
+import novoCliente from '@/components/cliente/Add'
+import listClientes from '@/components/cliente/List'
+import editCliente from '@/components/cliente/Edit'
 
 Vue.use(Router)
 
@@ -23,21 +27,39 @@ const router = new Router({
       name: 'login',
       component: login
     },
-    {
-      path: '/funcionarios',
+     {
+      path: '/listFuncionarios',
       name: 'funcionarios-list',
       component: listFuncionarios    
     },
     {
-      path: '/funcionario/:cpf',
+      path: '/updatefuncionario',
       name: "funcionario-edit",
       component: editFuncionario
-    },
+    }, 
     {
-      path: '/addFuncionario',
+      path: '/addfuncionario',
       name: "funcionario-add",
       component: novoFuncionario
+    },
+
+
+    {
+      path: '/listClientes',
+      name: 'clientes-list',
+      component: listClientes    
+    },
+    {
+      path: '/updatecliente',
+      name: "cliente-edit",
+      component: editCliente
+    }, 
+    {
+      path: '/addcliente',
+      name: "cliente-add",
+      component: novoCliente
     }
+
   ]
 })
 

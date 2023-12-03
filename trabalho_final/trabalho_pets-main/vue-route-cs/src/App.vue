@@ -11,7 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">                                        
             <li class="nav-item">
-              <router-link class="nav-link" to="/funcionario">Funcionario</router-link>
+              <router-link class="nav-link" to="/listFuncionarios">Funcionario</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/listclientes">Cliente</router-link>
             </li>
             <li class="nav-item">            
               <router-link class="nav-link" to="/" v-on:click.native="logout()" replace>Logout</router-link>

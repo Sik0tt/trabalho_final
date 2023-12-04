@@ -87,7 +87,7 @@
      import FuncionarioDataService from '../../services/FuncionarioDataService'
  
      export default{
-      name:'editFuncionario',
+      name:'updateFuncionario',
       data() {
              return {                
                  currentFuncionario: null,

@@ -99,7 +99,7 @@
                     </div>
 
                     <a class="badge badge-warning"
-                    :href="'/updatefuncionario/' + currentFuncionario.cpf"
+                    :href="'/updatefuncionario'"
                     >
                     Edit
                     </a>

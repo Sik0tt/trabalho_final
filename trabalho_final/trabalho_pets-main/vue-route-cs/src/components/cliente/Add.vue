@@ -97,13 +97,13 @@
 
             saveCliente(){
 
-                var func = jQuery.extend({}, this.cliente);//clona o this.novo_jogador e armazena na variavel jogador. dessa forma alteracoes em this.novo_jogador nao irao refletir em jogador.                                                                   
+                var cli = jQuery.extend({}, this.cliente);//clona o this.novo_jogador e armazena na variavel jogador. dessa forma alteracoes em this.novo_jogador nao irao refletir em jogador.                                                                   
 
-                if (func.cpf.trim().length > 0 && func.rg.trim().length > 0 && 
-                    func.nome.trim().length > 0 && func.numero_celular.trim().length > 0 &&
-                    func.email.trim().length > 0 && func.data_nascimento.trim().length > 0 &&
-                    func.endereco.trim().length > 0 && func.cep.trim().length > 0 &&
-                    func.complemento.trim().length > 0 && func.data_cadastro.trim().length > 0 ) {
+                if (cli.cpf.trim().length > 0 && cli.rg.trim().length > 0 && 
+                    cli.nome.trim().length > 0 && cli.numero_celular.trim().length > 0 &&
+                    cli.email.trim().length > 0 && cli.data_nascimento.trim().length > 0 &&
+                    cli.endereco.trim().length > 0 && cli.cep.trim().length > 0 &&
+                    cli.complemento.trim().length > 0 && cli.data_cadastro.trim().length > 0 ) {
                 
                     ClienteDataService.create(func)
                     .then(response => {

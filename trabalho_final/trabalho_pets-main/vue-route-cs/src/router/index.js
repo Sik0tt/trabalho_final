@@ -12,6 +12,23 @@ import novoCliente from '@/components/cliente/Add'
 import listClientes from '@/components/cliente/List'
 import editCliente from '@/components/cliente/Edit'
 
+import novoRaca from '@/components/raca/Add'
+import listRacas from '@/components/raca/List'
+import editRaca from '@/components/raca/Edit'
+
+
+import novoPet from '@/components/pet/Add'
+import listPets from '@/components/pet/List'
+import editPets from '@/components/pet/Edit'
+
+import novoVenda from '@/components/venda/Add'
+import listVendas from '@/components/venda/List'
+import editVendas from '@/components/venda/Edit'
+
+import novoPagamento from '@/components/pagamento/Add'
+import listPagamento from '@/components/pagamento/List'
+import editPagamento from '@/components/pagamento/Edit'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -28,9 +45,9 @@ const router = new Router({
       component: login
     },
      {
-      path: '/listFuncionarios',
+      path: '/listfuncionario',
       name: 'funcionarios-list',
-      component: listFuncionarios    
+      component: listFuncionarios   
     },
     {
       path: '/updatefuncionario',
@@ -45,7 +62,7 @@ const router = new Router({
 
 
     {
-      path: '/listClientes',
+      path: '/listclientes',
       name: 'clientes-list',
       component: listClientes    
     },
@@ -58,8 +75,73 @@ const router = new Router({
       path: '/addcliente',
       name: "cliente-add",
       component: novoCliente
-    }
+    },
 
+
+    {
+      path: '/listraca',
+      name: 'raca-list',
+      component: listRacas    
+    },
+    {
+      path: '/updateraca',
+      name: "raca-edit",
+      component: editRaca
+    }, 
+    {
+      path: '/addraca',
+      name: "raca-add",
+      component: novoRaca
+    },
+
+    {
+      path: '/listpets',
+      name: 'pet-list',
+      component: listPets    
+    },
+    {
+      path: '/updatepet',
+      name: "pet-edit",
+      component: editPets
+    }, 
+    {
+      path: '/addpet',
+      name: "pet-add",
+      component: novoPet
+    },
+
+
+    {
+      path: '/listvendas',
+      name: 'venda-list',
+      component: listVendas    
+    },
+    {
+      path: '/updatevenda',
+      name: "venda-edit",
+      component: editVendas
+    }, 
+    {
+      path: '/addvenda',
+      name: "venda-add",
+      component: novoVenda
+    },
+
+    {
+      path: '/listpagamento',
+      name: 'pagamento-list',
+      component: listPagamento    
+    },
+    {
+      path: '/updatepagamento',
+      name: "pagamento-edit",
+      component: editPagamento
+    }, 
+    {
+      path: '/addpagamento',
+      name: "pagamento-add",
+      component: novoPagamento
+    }
   ]
 })
 

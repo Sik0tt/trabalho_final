@@ -1,5 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
-import Pet from '../models/Pet'
+
 
 @Entity('tb_raca')
 class Raca {

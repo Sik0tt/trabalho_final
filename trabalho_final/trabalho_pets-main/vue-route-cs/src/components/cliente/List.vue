@@ -21,21 +21,21 @@
                     <th scope="col">Remover</th>
                 </tr>                     
                 <tbody>
-                    <tr v-for="(f, indice) in funcionarios" :key ="f.cpf" :class="{ active: indice == currentIndex }">
+                    <tr v-for="(c, indice) in clientes" :key ="c.cpf" :class="{ active: indice == currentIndex }">
 
-                            <td>{{f.cpf}}</td>
-                            <td>{{f.rg}}</td>
-                            <td>{{f.nome}}</td>
-                            <td>{{f.numero_celular}}</td>
-                            <td>{{f.email}}</td>
-                            <td>{{f.data_nascimento}}</td>
-                            <td>{{f.endereco}}</td>
-                            <td>{{f.cep}}</td>
-                            <td>{{f.complemento}}</td>
-                            <td>{{f.data_cadastro}}</td>         
+                            <td>{{c.cpf}}</td>
+                            <td>{{c.rg}}</td>
+                            <td>{{c.nome}}</td>
+                            <td>{{c.numero_celular}}</td>
+                            <td>{{c.email}}</td>
+                            <td>{{c.data_nascimento}}</td>
+                            <td>{{c.endereco}}</td>
+                            <td>{{c.cep}}</td>
+                            <td>{{c.complemento}}</td>
+                            <td>{{c.data_cadastro}}</td>         
                                 
-                            <td><button v-on:click="setCurrentCliente(f, indice)" class="btn" type="button">Alterar</button></td>
-                            <td><button v-on:click="remCliente(f, indice)" class="btn" type="button">Remover</button></td>
+                            <td><button v-on:click="setCurrentCliente(c, indice)" class="btn" type="button">Alterar</button></td>
+                            <td><button v-on:click="remCliente(c, indice)" class="btn" type="button">Remover</button></td>
                     </tr>
                 </tbody>
             </table>
